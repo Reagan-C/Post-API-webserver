@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class WebController {
 
 
-    @GetMapping(path = "get", produces = MediaType.APPLICATION_JSON_VALUE)
-    public String getJson(@RequestBody CalcServiceImpl calcService) {
-        return calcService.getRESPONSE();
-    }
+//    @GetMapping(path = "get", produces = MediaType.APPLICATION_JSON_VALUE)
+//    public String getJson(@RequestBody CalcServiceImpl calcService) {
+//        return calcService.getRESPONSE();
+//    }
 
     @PostMapping(path = "post", consumes = MediaType.APPLICATION_JSON_VALUE,
     produces = MediaType.APPLICATION_JSON_VALUE)
