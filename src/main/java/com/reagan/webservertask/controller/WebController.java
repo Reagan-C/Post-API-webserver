@@ -16,7 +16,7 @@ public class WebController {
 //        return calcService.getRESPONSE();
 //    }
 
-    @PostMapping(path = "post", consumes = MediaType.APPLICATION_JSON_VALUE,
+    @PostMapping(path = "/", consumes = MediaType.APPLICATION_JSON_VALUE,
     produces = MediaType.APPLICATION_JSON_VALUE)
     public String postOperation(@RequestBody CalcServiceImpl calcService) {
         return calcService.getJSON_RESPONSE_STARTING() + calcService.getSLACK_USERNAME() + calcService.getRESULT_STRING()
