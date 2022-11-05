@@ -20,7 +20,7 @@ public class WebController {
     public String postOperation(@RequestBody CalcServiceImpl calcService) {
         return calcService.getJSON_RESPONSE_STARTING() + calcService.getSLACK_USERNAME() + calcService.getRESULT_STRING()
                 + calcService.getResult() + calcService.getOPERATION_TYPE_STRING()
-                + calcService.getOperation_type().toLowerCase() +  "\n" + calcService.getJSON_RESPONSE_ENDING();
+                + calcService.getOperation_type()+ "\"\n" + calcService.getJSON_RESPONSE_ENDING();
     }
 
 }

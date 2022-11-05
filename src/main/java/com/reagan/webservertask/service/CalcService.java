@@ -1,5 +1,7 @@
 package com.reagan.webservertask.service;
 
+import com.reagan.webservertask.enums.Operation;
+
 public interface CalcService {
 
     Integer add(int x, int y);

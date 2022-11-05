@@ -3,7 +3,6 @@ package com.reagan.webservertask.enums;
 import lombok.Getter;
 
 @Getter
-
 public enum Operation {
     ADDITION("addition"),
     SUBTRACTION("subtraction"),

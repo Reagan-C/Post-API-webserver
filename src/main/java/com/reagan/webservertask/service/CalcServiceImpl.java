@@ -17,7 +17,7 @@ public class CalcServiceImpl implements CalcService{
     private  final int AGE = 28;
 
     private  final String RESULT_STRING = "\"result\": ";
-    private  final String OPERATION_TYPE_STRING = ", \"operation_type\": ";
+    private  final String OPERATION_TYPE_STRING = ", \"operation_type\": \"";
 
 
     private final String BIO = ", \"bio\": \"I am Reagan, a passionate junior backend engineer with java language" +
@@ -50,38 +50,39 @@ public class CalcServiceImpl implements CalcService{
 
     @Override
     public Integer getResult() {
-        int result;
+        int result = 0;
         checkType(operation_type);
 
         if (this.operation_type.toLowerCase().equals(Operation.ADDITION.getValue())){
-            this.setOperation_type(Operation.ADDITION.getValue());
             result = add(x,y);
+            setOperation_type(Operation.ADDITION.getValue());
         } else if (this.operation_type.toLowerCase().equals(Operation.SUBTRACTION.getValue())) {
-            this.setOperation_type(Operation.ADDITION.SUBTRACTION.getValue());
             result = subtract(x,y);
+            setOperation_type(Operation.SUBTRACTION.getValue());
         }else if(this.operation_type.toLowerCase().equals(Operation.MULTIPLICATION.getValue())){
-            this.setOperation_type(Operation.MULTIPLICATION.getValue());
             result = multiply(x,y);
+            setOperation_type(Operation.MULTIPLICATION.getValue());
         } else {
             setOperation_type(Operation.UNKNOWN.getValue());
-            result = 0;
         }
         return result;
     }
 
     public void checkType(String input) {
         List<String> keyword = List.of(input.toLowerCase().split(" "));
+
         if (keyword.isEmpty()) {
-            operation_type = input;
+            operation_type = "";
         }else if (keyword.size() == 1) {
             operation_type = input;
         } else {
             checkInt(input);
 
-            if (keyword.contains("add") || keyword.contains("plus")) {
+            if (keyword.contains("add") || keyword.contains("plus") || keyword.contains("addition")) {
                 operation_type = Operation.ADDITION.getValue();
             }
-            if (keyword.contains("subtract") || keyword.contains("minus") || keyword.contains("difference")) {
+            if (keyword.contains("subtract") || keyword.contains("minus") || keyword.contains("difference")||
+                    keyword.contains("subtraction") ){
                 operation_type = Operation.SUBTRACTION.getValue();
             }
             if (keyword.contains("multiply") || keyword.contains("product") ||keyword.contains("multiplication")) {
