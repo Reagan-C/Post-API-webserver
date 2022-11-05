@@ -49,19 +49,22 @@ public class CalcServiceImpl implements CalcService{
     }
 
     @Override
-    public String getResult() {
-        String result;
+    public Integer getResult() {
+        int result;
         checkType(operation_type);
 
         if (this.operation_type.toLowerCase().equals(Operation.ADDITION.getValue())){
-            result = (add(x,y)).toString();
+            this.setOperation_type(Operation.ADDITION.getValue());
+            result = add(x,y);
         } else if (this.operation_type.toLowerCase().equals(Operation.SUBTRACTION.getValue())) {
-            result = (subtract(x,y)).toString();
+            this.setOperation_type(Operation.ADDITION.SUBTRACTION.getValue());
+            result = subtract(x,y);
         }else if(this.operation_type.toLowerCase().equals(Operation.MULTIPLICATION.getValue())){
-            result = (multiply(x,y)).toString();
+            this.setOperation_type(Operation.MULTIPLICATION.getValue());
+            result = multiply(x,y);
         } else {
             setOperation_type(Operation.UNKNOWN.getValue());
-            result = ("Invalid argument passed");
+            result = 0;
         }
         return result;
     }

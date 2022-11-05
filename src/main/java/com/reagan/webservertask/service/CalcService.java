@@ -8,7 +8,7 @@ public interface CalcService {
 
     Integer  subtract(int x, int y);
 
-    String getResult();
+    Integer getResult();
     void checkType(String input);
     void checkInt(String input);
 }
