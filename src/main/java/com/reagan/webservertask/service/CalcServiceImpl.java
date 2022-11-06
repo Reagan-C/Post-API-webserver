@@ -32,6 +32,7 @@ public class CalcServiceImpl implements CalcService{
 
     private String operation_type;
 
+
     //methods
     @Override
     public Integer add(int x, int y) {
@@ -54,25 +55,24 @@ public class CalcServiceImpl implements CalcService{
         checkType(operation_type);
 
         if (this.operation_type.toLowerCase().equals(Operation.ADDITION.getValue())){
-            result = add(x,y);
-            setOperation_type(Operation.ADDITION.getValue());
+            result += add(x,y);
         } else if (this.operation_type.toLowerCase().equals(Operation.SUBTRACTION.getValue())) {
-            result = subtract(x,y);
-            setOperation_type(Operation.SUBTRACTION.getValue());
+            result += subtract(x,y);
         }else if(this.operation_type.toLowerCase().equals(Operation.MULTIPLICATION.getValue())){
-            result = multiply(x,y);
-            setOperation_type(Operation.MULTIPLICATION.getValue());
+            result += multiply(x,y);
         } else {
             setOperation_type(Operation.UNKNOWN.getValue());
         }
         return result;
     }
 
+    //check if operator type contains an array of Strings and extract operation type and integers
+    @Override
     public void checkType(String input) {
         List<String> keyword = List.of(input.toLowerCase().split(" "));
 
         if (keyword.isEmpty()) {
-            operation_type = "";
+            operation_type = Operation.UNKNOWN.getValue();
         }else if (keyword.size() == 1) {
             operation_type = input;
         } else {
@@ -92,7 +92,8 @@ public class CalcServiceImpl implements CalcService{
     }
 
 
-// check if operator type in sentence format contains number
+    // check if operator type in string array format contains number
+    @Override
     public void checkInt(String checkNumber) {
         List<String> arr = List.of(checkNumber.replace(".", "").split(" "));
         ArrayList<Integer> intArray = new ArrayList<>();
@@ -101,7 +102,7 @@ public class CalcServiceImpl implements CalcService{
                 int number = Integer.parseInt(num);
                 intArray.add(number);
             } catch (NumberFormatException e) {
-                System.out.println("looping through operator string");
+                System.out.println("looping through operator string array...");
             }
         }
         if (intArray.size() == 2) {

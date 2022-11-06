@@ -7,7 +7,7 @@ public enum Operation {
     ADDITION("addition"),
     SUBTRACTION("subtraction"),
     MULTIPLICATION("multiplication"),
-    UNKNOWN("unknown");
+    UNKNOWN("invalid operation type");
 
     private final String value;
 
